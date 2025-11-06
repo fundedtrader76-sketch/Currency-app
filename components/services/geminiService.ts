@@ -1,7 +1,7 @@
 import { GoogleGenAI, Type } from "@google/genai";
 // Fix: 'PredictionSignal' is used as a value, so it needs a value import, not a type-only import.
-import { PredictionSignal } from '../types';
-import type { Asset, MarketData, Prediction } from '../types';
+import { PredictionSignal } from '../../types';
+import type { Asset, MarketData, Prediction } from '../../types';
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY! });
 const modelName = 'gemini-2.5-pro';

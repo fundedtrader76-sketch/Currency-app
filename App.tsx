@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Header from './components/Header';
-import PairSelector from './components/PairSelector';
+import PairSelector from './PairSelector';
 import MarketDataDisplay from './components/MarketDataDisplay';
 import LiveChart from './components/LiveChart';
 import PredictionCard from './components/PredictionCard';
 import ImageUploader from './components/ImageUploader';
 import ImageGallery from './components/ImageGallery';
 import { ASSETS } from './constants';
-import { fetchMarketData } from './services/marketDataService';
-import { getMarketPrediction, getImageAnalysisPrediction } from './services/geminiService';
+import { fetchMarketData } from './components/services/marketDataService';
+import { getMarketPrediction, getImageAnalysisPrediction } from './components/services/geminiService';
 import type { Asset, MarketData, Prediction, SavedImage } from './types';
 
 const App: React.FC = () => {
