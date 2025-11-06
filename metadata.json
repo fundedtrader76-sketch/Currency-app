@@ -1,0 +1,5 @@
+{
+  "name": "Currency ",
+  "description": "A financial dashboard that displays simulated real-time market data and charts for various assets. It includes a feature for users to upload and view their own chart analysis images.",
+  "requestFramePermissions": []
+}
