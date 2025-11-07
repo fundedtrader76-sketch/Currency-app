@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Header from './components/Header';
-import PairSelector from './PairSelector';
+import PairSelector from './components/PairSelector';
 import MarketDataDisplay from './components/MarketDataDisplay';
 import LiveChart from './components/LiveChart';
 import PredictionCard from './components/PredictionCard';

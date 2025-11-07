@@ -42,6 +42,9 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onDelete }) => {
           {images.slice().reverse().map((image) => {
             const signalUI = getSignalUI(image.prediction.signal);
             const { entryPrice, takeProfit, stopLoss } = image.prediction;
+            const isForex = ['EURUSD', 'GBPUSD'].includes(image.assetId);
+            const priceDecimals = isForex ? 5 : 2;
+            
             return (
                 <div key={image.id} className="group relative aspect-square rounded-md overflow-hidden cursor-pointer">
                    <img src={image.dataUrl} alt="Uploaded chart" className="w-full h-full object-cover" />
@@ -61,9 +64,9 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onDelete }) => {
                         </div>
                         {image.prediction.signal !== PredictionSignal.HOLD && (
                             <div className='space-y-1 text-xs'>
-                                <Stat label="Entry" value={entryPrice?.toFixed(4)} colorClass="text-cyan-300" />
-                                <Stat label="TP" value={takeProfit?.toFixed(4)} colorClass="text-green-400" />
-                                <Stat label="SL" value={stopLoss?.toFixed(4)} colorClass="text-red-400" />
+                                <Stat label="Entry" value={entryPrice?.toFixed(priceDecimals)} colorClass="text-cyan-300" />
+                                <Stat label="TP" value={takeProfit?.toFixed(priceDecimals)} colorClass="text-green-400" />
+                                <Stat label="SL" value={stopLoss?.toFixed(priceDecimals)} colorClass="text-red-400" />
                             </div>
                         )}
                         <div className="flex-grow min-h-0">

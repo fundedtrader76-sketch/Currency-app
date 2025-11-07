@@ -70,6 +70,9 @@ const PredictionCard: React.FC<PredictionCardProps> = ({ asset, prediction, isLo
         const { entryPrice, takeProfit, stopLoss } = prediction;
         let rrr = null;
 
+        const isForex = ['EURUSD', 'GBPUSD'].includes(asset.id);
+        const priceDecimals = isForex ? 5 : 2;
+
         if (entryPrice && takeProfit && stopLoss) {
             const reward = Math.abs(takeProfit - entryPrice);
             const risk = Math.abs(entryPrice - stopLoss);
@@ -87,10 +90,10 @@ const PredictionCard: React.FC<PredictionCardProps> = ({ asset, prediction, isLo
                 
                 {prediction.signal !== PredictionSignal.HOLD && entryPrice && takeProfit && stopLoss && (
                      <div className="grid grid-cols-2 gap-4 bg-gray-900/50 p-4 rounded-lg">
-                        <Stat label="Entry Price" value={entryPrice.toFixed(5)} colorClass="text-cyan-400" />
+                        <Stat label="Entry Price" value={entryPrice.toFixed(priceDecimals)} colorClass="text-cyan-400" />
                         <Stat label="Risk/Reward" value={rrr ? `1 : ${rrr}`: 'N/A'} colorClass={rrr && parseFloat(rrr) >= 3 ? 'text-green-400' : 'text-yellow-400'} />
-                        <Stat label="Take Profit" value={takeProfit.toFixed(5)} colorClass="text-green-400" />
-                        <Stat label="Stop Loss" value={stopLoss.toFixed(5)} colorClass="text-red-400" />
+                        <Stat label="Take Profit" value={takeProfit.toFixed(priceDecimals)} colorClass="text-green-400" />
+                        <Stat label="Stop Loss" value={stopLoss.toFixed(priceDecimals)} colorClass="text-red-400" />
                     </div>
                 )}
                
